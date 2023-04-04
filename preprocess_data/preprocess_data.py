@@ -90,7 +90,7 @@ def preprocess_data(dataset_name: str, bipartite: bool = True, node_feat_dim: in
     :return:
     """
     Path("../datasets/{}/".format(dataset_name)).mkdir(parents=True, exist_ok=True)
-    PATH = '../DG_data/{}/{}.csv'.format(dataset_name, dataset_name)
+    PATH = '../datasets/{}/{}.csv'.format(dataset_name, dataset_name)
     OUT_DF = '../datasets/{}/ml_{}.csv'.format(dataset_name, dataset_name)
     OUT_FEAT = '../datasets/{}/ml_{}.npy'.format(dataset_name, dataset_name)
     OUT_NODE_FEAT = '../datasets/{}/ml_{}_node.npy'.format(dataset_name, dataset_name)
@@ -124,9 +124,9 @@ def check_data(dataset_name: str):
     :return:
     """
     # original data paths
-    origin_OUT_DF = '../DG_data/{}/ml_{}.csv'.format(dataset_name, dataset_name)
-    origin_OUT_FEAT = '../DG_data/{}/ml_{}.npy'.format(dataset_name, dataset_name)
-    origin_OUT_NODE_FEAT = '../DG_data/{}/ml_{}_node.npy'.format(dataset_name, dataset_name)
+    origin_OUT_DF = '../datasets/{}/ml_{}.csv'.format(dataset_name, dataset_name)
+    origin_OUT_FEAT = '../datasets/{}/ml_{}.npy'.format(dataset_name, dataset_name)
+    origin_OUT_NODE_FEAT = '../datasets/{}/ml_{}_node.npy'.format(dataset_name, dataset_name)
 
     # processed data paths
     OUT_DF = '../datasets/{}/ml_{}.csv'.format(dataset_name, dataset_name)
@@ -152,7 +152,8 @@ def check_data(dataset_name: str):
 
 parser = argparse.ArgumentParser('Interface for preprocessing datasets')
 parser.add_argument('--dataset_name', type=str, choices=['wikipedia', 'reddit', 'mooc', 'lastfm', 'enron', 'SocialEvo', 'uci',
-                                                         'Flights', 'CanParl', 'USLegis', 'UNtrade', 'UNvote', 'Contacts'],
+                                                         'Flights', 'CanParl', 'USLegis', 'UNtrade', 'UNvote', 'Contacts',
+                                                         'single_edge_data','double_edge_data'],
                     help='Dataset name', default='wikipedia')
 parser.add_argument('--node_feat_dim', type=int, default=172, help='Number of node raw features')
 
@@ -161,7 +162,7 @@ args = parser.parse_args()
 print(f'preprocess dataset {args.dataset_name}...')
 if args.dataset_name in ['enron', 'SocialEvo', 'uci']:
     Path("../datasets/{}/".format(args.dataset_name)).mkdir(parents=True, exist_ok=True)
-    copy_tree("../DG_data/{}/".format(args.dataset_name), "../datasets/{}/".format(args.dataset_name))
+    copy_tree("../datasets/{}/".format(args.dataset_name), "../datasets/{}/".format(args.dataset_name))
     print(f'the original dataset of {args.dataset_name} is unavailable, directly use the processed dataset by previous works.')
 else:
     # bipartite dataset
