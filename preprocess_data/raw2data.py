@@ -186,15 +186,15 @@ def load_data_double_edge():
             unit_row.append(userid2num[inviter_id])
             unit_row.append(itemid2num[item_id])
             unit_row.append(date_to_timestamp(item['timestamp']))
-            unit_row.append(0)
+            unit_row.append(1)
             unit_row = unit_row + item_info_nomal[item_id]
             csv_writer.writerow(unit_row)
 
             unit_row = []
+            unit_row.append(userid2num[inviter_id])
             unit_row.append(itemid2num[item_id])
-            unit_row.append(userid2num[voter_id])
             unit_row.append(date_to_timestamp(item['timestamp']))
-            unit_row.append(0)
+            unit_row.append(2)
             unit_row = unit_row + item_info_nomal[item_id]
             csv_writer.writerow(unit_row)
 
