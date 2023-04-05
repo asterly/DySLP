@@ -127,7 +127,7 @@ def load_data_single_edge():
 
     print("-" * 50, end="开始处理单边方案")
     print("-" * 50)
-    csv_file = open('/home/akun/single_edge_data.csv', 'w', newline='', encoding='utf8')
+    csv_file = open('../datasets/single_edge_data/single_edge_data.csv', 'w', newline='', encoding='utf8')
     csv_writer = csv.writer(csv_file)
     with open("../raw/item_share_train_info.json") as f :
         json_data=json.load(f)
@@ -166,7 +166,7 @@ def load_data_double_edge():
 
     print("-" * 50,end="开始处理双边方案")
     print("-" * 50)
-    csv_file = open('/home/akun/double_edge_data.csv', 'w', newline='', encoding='utf8')
+    csv_file = open('../datasets/double_edge_data/double_edge_data.csv', 'w', newline='', encoding='utf8')
     csv_writer = csv.writer(csv_file)
     with open("../raw/item_share_train_info.json") as f:
         json_data = json.load(f)
@@ -191,7 +191,7 @@ def load_data_double_edge():
             csv_writer.writerow(unit_row)
 
             unit_row = []
-            unit_row.append(userid2num[inviter_id])
+            unit_row.append(userid2num[voter_id])
             unit_row.append(itemid2num[item_id])
             unit_row.append(date_to_timestamp(item['timestamp']))
             unit_row.append(2)
