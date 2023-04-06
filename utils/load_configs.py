@@ -42,8 +42,8 @@ def get_link_prediction_args(is_evaluation: bool = False):
     parser.add_argument('--optimizer', type=str, default='Adam', choices=['SGD', 'Adam', 'RMSprop'], help='name of optimizer')
     parser.add_argument('--weight_decay', type=float, default=0.0, help='weight decay')
     parser.add_argument('--patience', type=int, default=20, help='patience for early stopping')
-    parser.add_argument('--val_ratio', type=float, default=0.15, help='ratio of validation set')
-    parser.add_argument('--test_ratio', type=float, default=0.15, help='ratio of test set')
+    parser.add_argument('--val_ratio', type=float, default=0.2, help='ratio of validation set')
+    parser.add_argument('--test_ratio', type=float, default=0, help='ratio of test set')
     parser.add_argument('--num_runs', type=int, default=5, help='number of runs')
     parser.add_argument('--test_interval_epochs', type=int, default=10, help='how many epochs to perform testing once')
     parser.add_argument('--negative_sample_strategy', type=str, default='random', choices=['random', 'historical', 'inductive'],
